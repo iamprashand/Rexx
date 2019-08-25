@@ -1,2 +1,3 @@
 # Rexx
-Oh just a sample repository to hold all my rexx code
+
+This is where all my rexx collection is stored
