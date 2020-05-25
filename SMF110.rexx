@@ -84,6 +84,7 @@ Process_SMF_Record: proc
               Do i=1 to noOfDataRecords
                 call Read_Perf_DataSecion offsetToDataRec smfRecord
                 offsetToDataRec = offsetToDataRec + lengthOfDataRec
+                smfData. = ''
               End
             End                                                    
 
@@ -94,9 +95,10 @@ Process_SMF_Record: proc
 
 Read_Perf_DataSecion: procedure expose smfData.
   parse arg base smfRecord
-
-  smfData.tran = EBCDIC(smfRecord,base+dict.TRAN.offset,dict.TRAN.length)
- /* this is where i am left*/
+  
+  smfData.Tran = EBCDIC(smfRecord,base+dict.TRAN.offset,dict.TRAN.length)
+  smfData.UserId = EBCDIC(smfRecord,base+dict.USERID.offset,dict.USERID.length)
+  smfData.tranType = EBCDIC(smfRecord,base+dict.TTYPE.offset,dict.TTYPE.length)
   return
 
 /*---------------------------------------------------------------------
